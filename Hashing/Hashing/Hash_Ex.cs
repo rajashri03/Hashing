@@ -34,7 +34,7 @@ namespace Hashing
         /// Insert value with key to table
         /// </summary>
         /// <param name="key"></param>
-        /// <param name="value"></param>
+        /// <param name="value"></param> 
         public void Insert(K key, V value)
         {
             int genIndex = HashFuncation(key);//generates hash index
