@@ -2,7 +2,7 @@
 using Hashing;
 
 Hash_Ex<string, int> hashTable = new Hash_Ex<string, int>(7);
-//Hash Table
+//Hash Table 
 hashTable.Insert("To", 1);
 Console.WriteLine("To->" + hashTable.GetValue("To"));
 hashTable.Insert("be", 2);
