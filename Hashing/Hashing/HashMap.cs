@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Hashing
 {
-    public class HashMap
+    public class HashMap<K, V>
     {
-        public string Key { get; set; }
-        public int Value { get; set; }
-        public HashMap Next { get; set; }
-        public HashMap Previous { get; set; }
+        public K Key { get; set; }
+        public V Value { get; set; }
+        public HashMap<K, V> Next { get; set; }
+        public HashMap<K, V> Previous { get; set; }
     }
 }

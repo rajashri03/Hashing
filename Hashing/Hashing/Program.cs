@@ -1,10 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Hashing;
 
-Hash_Ex hashTable = new Hash_Ex(7);
+Hash_Ex<string, int> hashTable = new Hash_Ex<string, int>(7);
 //Hash Table
 hashTable.Insert("To", 1);
-Console.WriteLine("To->"+hashTable.GetValue("To"));
+Console.WriteLine("To->" + hashTable.GetValue("To"));
 hashTable.Insert("be", 2);
 Console.WriteLine("Be->" + hashTable.GetValue("be"));
 hashTable.Insert("Or", 3);

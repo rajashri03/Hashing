@@ -11,21 +11,21 @@ namespace Hashing
     /// Keys--Holds the Keys,Keys is an array of HashMap Type
     /// tableSize-//define size of keys and calculate hash
     /// </summary>
-    public class Hash_Ex
+    public class Hash_Ex<K, V>
     {
-        private HashMap[] Keys;
+        private HashMap<K, V>[] Keys;
         private readonly int tableSize;
 
         public Hash_Ex(int maxTableSize)//Constructor
         {
             tableSize = maxTableSize;
-            Keys = new HashMap[tableSize];
+            Keys = new HashMap<K, V>[tableSize];
         }
         /// <summary>
         /// Hash Function
         /// </summary>
         /// <param name="Key"></param>
-        private int HashFuncation(string key)
+        private int HashFuncation(K key)
         {
             int position = key.GetHashCode() % tableSize; //identifying hash code of key
             return Math.Abs(position);
@@ -35,17 +35,17 @@ namespace Hashing
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
-        public void Insert(string key, int value)
+        public void Insert(K key, V value)
         {
             int genIndex = HashFuncation(key);//generates hash index
-            HashMap node = Keys[genIndex];
+            HashMap<K, V> node = Keys[genIndex];
 
             if (node == null)
             {
-                Keys[genIndex] = new HashMap() { Key = key, Value = value };
+                Keys[genIndex] = new HashMap<K, V>() { Key = key, Value = value };
                 return;
             }
-            HashMap newNode = new HashMap() { Key = key, Value = value, Previous = node, Next = null };
+            HashMap<K, V> newNode = new HashMap<K, V>() { Key = key, Value = value, Previous = node, Next = null };
             node.Next = newNode;
         }
         /// <summary>
@@ -54,13 +54,13 @@ namespace Hashing
         /// <param name="key">key</param>
         /// <returns>value</returns>
         /// <exception cref="Exception">Don't have the key in hash</exception>
-        public int GetValue(string key)
+        public V GetValue(K key)
         {
             int genIndex = HashFuncation(key);
-            HashMap node = Keys[genIndex];
+            HashMap<K, V> node = Keys[genIndex];
             while (node != null)//search the linked list to match the key
             {
-                if (node.Key == key)
+                if (node.Key.Equals(key))
                 {
                     return node.Value;
                 }
@@ -69,5 +69,5 @@ namespace Hashing
 
             throw new Exception("Don't have the key in hash!");
         }
-    }   
+    }
 }
